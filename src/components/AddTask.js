@@ -5,8 +5,14 @@ class AddTask extends React.Component {
   taskInput = React.createRef();
 
   addTask = (e) => {
-    if (e.key === 'Enter') {
-      console.log(this.taskInput.current.value);
+    var task = {}
+    if (e.keyCode === 13) {
+      task = {
+        taskText: this.taskInput.current.value
+      }
+      this.props.addTask(task);
+      // Clear the input
+      this.taskInput.current.value = "";
     }
   }
 
@@ -16,7 +22,7 @@ class AddTask extends React.Component {
         type="text" 
         ref={this.taskInput}
         placeholder="Add Task" 
-        onKeyDown={this.addTask} />
+        onKeyUp={this.addTask} />
     )
   }
 }
