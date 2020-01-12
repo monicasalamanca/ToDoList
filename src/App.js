@@ -20,20 +20,36 @@ class App extends React.Component {
     });
   };
 
+  addTaskDone = (key) => {
+    // 1. Take a copy of the existing state
+    const tasksTodo = { ...this.state.tasksTodo };
+    const tasksDone = { ...this.state.tasksDone };
+    // 2. Add the task to done
+    tasksDone[key] = tasksTodo[key];
+    // 3. remove task from tasksTodo
+    //tasksTodo[key] = null;
+    delete tasksTodo[key];
+    // 3. update state
+    this.setState({
+      tasksTodo,
+      tasksDone
+    });
+  }
+
   render() {
     return (
       <div className="App">
         <div className="todo-wrapper">
           <h1>Task List</h1>
           <ul className="todo-list">
-            {Object.keys(this.state.tasksTodo).map(key => <Task key={key} taskDets={this.state.tasksTodo[key]} />)}
+            {Object.keys(this.state.tasksTodo).map(key => <Task key={key} taskDets={this.state.tasksTodo[key]} addTaskDone={this.addTaskDone} taskKey={key} />)}
           </ul>
           <AddTaskTodo addTaskTodo={this.addTaskTodo} />
         </div>
         <div className="done-wrapper">
           <h1>Done List</h1>
           <ul className="done-list">
-
+            {Object.keys(this.state.tasksDone).map(key => <Task key={key} taskDets={this.state.tasksDone[key]} />)}
           </ul>
         </div>
       </div>

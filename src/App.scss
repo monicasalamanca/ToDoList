@@ -9,16 +9,17 @@
   grid-template-columns: 1fr 1fr;
   column-gap: 10px;
 
-  .todo-wrapper {
+  .todo-wrapper, .done-wrapper {
     padding: 15px;
     background-color: palevioletred;
     background-color: rgba(219, 112, 147, 0.65);
+    display: grid;
 
     h1 {
       color: #e82666;
     }
 
-    ul.todo-list {
+    ul.todo-list, ul.done-list {
       list-style-type: none;
       padding: 0;
 
@@ -38,6 +39,7 @@
       background-color: rgba(219, 112, 147, 0.70);
       border: palevioletred;
       color: #e82666;
+      height: 21px;
 
       &::placeholder {
         color: #e82666;
@@ -48,5 +50,15 @@
   .done-wrapper {
     padding: 15px;
     background-color: paleturquoise;
+
+    h1 {
+      color: #017d7d;
+    }
+    
+    ul.done-list {
+      li {
+        text-decoration: line-through;
+      }
+    }
   }
 }
