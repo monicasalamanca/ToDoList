@@ -42,14 +42,14 @@ class App extends React.Component {
         <div className="todo-wrapper">
           <h1>Task List</h1>
           <ul className="todo-list">
-            {Object.keys(this.state.tasksTodo).map(key => <Task key={key} taskDets={this.state.tasksTodo[key]} addTaskDone={this.addTaskDone} taskKey={key} />)}
+            {Object.keys(this.state.tasksTodo).map(key => <Task key={key} taskDets={this.state.tasksTodo[key]} addTaskDone={this.addTaskDone} taskKey={key} action="doing" />)}
           </ul>
           <AddTaskTodo addTaskTodo={this.addTaskTodo} />
         </div>
         <div className="done-wrapper">
           <h1>Done List</h1>
           <ul className="done-list">
-            {Object.keys(this.state.tasksDone).map(key => <Task key={key} taskDets={this.state.tasksDone[key]} />)}
+            {Object.keys(this.state.tasksDone).map(key => <Task key={key} taskDets={this.state.tasksDone[key]} action="finished" />)}
           </ul>
         </div>
       </div>
